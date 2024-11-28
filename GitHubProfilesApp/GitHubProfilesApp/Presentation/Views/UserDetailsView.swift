@@ -48,9 +48,14 @@ struct UserDetailsView: View {
                     HStack {
                         Image(systemName: "folder")
                             .foregroundColor(.blue)
-                        Text("Public Repositories: \(details.publicRepos)")
-                            .font(.system(size: 16, weight: .medium, design: .rounded))
-                            .foregroundColor(.primary)
+                        Text(
+                            String(
+                                format: NSLocalizedString("public_repositories", comment: ""),
+                                Int(details.publicRepos) ?? 0
+                            )
+                        )
+                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                        .foregroundColor(.primary)
                     }
                     .padding(.top, 10)
 
@@ -108,7 +113,7 @@ class MockFetchUserDetailsUseCase: FetchUserDetailsUseCase {
             username: "octocat",
             avatarURL: "https://github.com/images/error/octocat_happy.gif",
             bio: "A passionate GitHub mascot!",
-            publicRepos: 42
+            publicRepos: 2
         )
     }
 }
